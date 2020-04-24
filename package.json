@@ -1,0 +1,26 @@
+{
+  "name": "skyui",
+  "version": "0.0.1",
+  "description": "这是一个ui框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huzhiwu1/skyui.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "胡志武",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huzhiwu1/skyui/issues"
+  },
+  "homepage": "https://github.com/huzhiwu1/skyui#readme",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}
