@@ -1,8 +1,13 @@
 <template>
-    <button class="g-button">按钮</button>
+    <button class="g-button">
+        <g-icon name="left"></g-icon>
+        <slot></slot>
+    </button>
 </template>
 <script>
-    export default {}
+    export default {
+        props:['icon']
+    }
 </script>
 <style lang="scss">
     .g-button {
@@ -11,7 +16,6 @@
         border-radius: 0.4em;
         border: 1px solid var(--border-color);
         background-color: var(--button-bg);
-
         &:hover {
             border-color: var(--border-hover-color)
         }
