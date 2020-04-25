@@ -1,9 +1,9 @@
 <template>
-    <button :class="{[`icon-${iconPosition}`]:true}" class="g-button"
-        @click="$emit('click')"
+    <button :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
+            class="g-button"
     >
         <g-icon :name="icon" class="icon" v-if='icon&&!isLoading'></g-icon>
-        <g-icon name="loading" v-if="isLoading" class="icon loading"></g-icon>
+        <g-icon class="icon loading" name="loading" v-if="isLoading"></g-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -20,9 +20,9 @@
                     return ['left', 'right'].includes(value)
                 }
             },
-            isLoading:{
-                type:Boolean,
-                default:false,
+            isLoading: {
+                type: Boolean,
+                default: false,
             }
         }
     }
@@ -36,19 +36,22 @@
             transform: rotateZ(360deg)
         }
     }
-    .loading{
-        animation:spin 1s infinite linear
+
+    .loading {
+        animation: spin 1s infinite linear
     }
+
     .g-button {
         font-size: var(--font-size);
         padding: 0.5em 1em;
-        border-radius: 0.4em;
+        border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background-color: var(--button-bg);
         display: inline-flex;
         justify-content: center;
         align-items: center;
         vertical-align: middle;
+
         &:hover {
             border-color: var(--border-hover-color)
         }
