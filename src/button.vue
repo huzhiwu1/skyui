@@ -1,6 +1,6 @@
 <template>
     <button class="g-button">
-        <g-icon name="left"></g-icon>
+        <g-icon :name="icon"></g-icon>
         <slot></slot>
     </button>
 </template>
