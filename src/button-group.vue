@@ -23,7 +23,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        .g-button{
+       .g-button{
             border-radius:0;
             &:first-child{
                 border-top-left-radius:var(--border-radius);
@@ -43,4 +43,4 @@
         }
     }
 </style>
-∂
+
