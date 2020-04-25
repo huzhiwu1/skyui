@@ -31,7 +31,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-
+        vertical-align: middle;
         &:hover {
             border-color: var(--border-hover-color)
         }
