@@ -6,6 +6,14 @@
 
 <script>
     export default {
+        mounted(){
+          for(let item of this.$el.children){
+              let name = item.nodeName.toLowerCase()
+              if(name!=='button'){
+                  console.warn(`button-group内部需要是button组件，但你却写了${name}`)
+              }
+          }
+        },
         name: "button-group"
     }
 </script>
