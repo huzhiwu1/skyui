@@ -1,10 +1,10 @@
 <template>
     <button :class="{[`icon-${iconPosition}`]:true}" class="g-button">
-        <g-icon :name="icon" class="icon" v-if='icon'></g-icon>
+        <g-icon :name="icon" class="icon" v-if='icon&&!isLoading'></g-icon>
+        <g-icon name="loading" v-if="isLoading" class="icon loading"></g-icon>
         <div class="content">
             <slot></slot>
         </div>
-
     </button>
 </template>
 <script>
@@ -17,11 +17,26 @@
                 validator(value) {
                     return ['left', 'right'].includes(value)
                 }
+            },
+            isLoading:{
+                type:Boolean,
+                default:false,
             }
         }
     }
 </script>
 <style lang="scss">
+    @keyframes spin {
+        0% {
+            transform: rotateZ(0deg)
+        }
+        100% {
+            transform: rotateZ(360deg)
+        }
+    }
+    .loading{
+        animation:spin 1s infinite linear
+    }
     .g-button {
         font-size: var(--font-size);
         padding: 0.5em 1em;
