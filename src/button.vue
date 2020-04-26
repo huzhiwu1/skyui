@@ -1,5 +1,5 @@
 <template>
-    <button v-wave='"red"' :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
+    <button  :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
             class="g-button"
     >
         <g-icon :name="icon" class="icon" v-if='icon&&!isLoading'></g-icon>
@@ -60,7 +60,7 @@
         justify-content: center;
         align-items: center;
         vertical-align: middle;
-        position: relative;
+        /*position: relative;*/
         overflow: hidden;
         .rippling{
             position: absolute;

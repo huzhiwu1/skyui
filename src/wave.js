@@ -6,8 +6,11 @@ const ownAddEventListener = (scope,type,handler,capture)=>{
     }
 }
 const handleClick=(e,el,binding)=>{
+
     let waveDom = el.querySelector('.waveWrap')
     if(!waveDom){
+        let {position} = window.getComputedStyle(el)
+        if(position==='static')el.style.position='relative'
         waveDom=document.createElement('div')
         waveDom.classList.add('waveWrap','animate')
         waveDom.style.top=e.offsetY-50+'px'
