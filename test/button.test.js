@@ -76,4 +76,34 @@ describe('Button', () => {
         expect(callback).to.have.been.called
 
     })
+    it('点击button会有涟漪',()=>{
+        const div = document.createElement('div')
+        document.body.appendChild(div)
+        const Constructor = Vue.extend(Button)
+        const vm = new Constructor({
+            propsData: {
+                wave:'red'
+            }
+        }).$mount(div)
+        vm.$el.click()
+        const waveDom = vm.$el.querySelector('div.waveWrap')
+        expect(waveDom).to.be.ok
+        vm.$el.remove()
+        vm.$destroy()
+    })
+    it('点击button涟漪色可控',()=>{
+        const div = document.createElement('div')
+        document.body.appendChild(div)
+        const Constructor = Vue.extend(Button)
+        const vm = new Constructor({
+            propsData: {
+                wave:'red'
+            }
+        }).$mount(div)
+        vm.$el.click()
+        const waveDom = vm.$el.querySelector('div.waveWrap')
+        expect(window.getComputedStyle(waveDom).backgroundColor==='red')
+        vm.$el.remove()
+        vm.$destroy()
+    })
 })

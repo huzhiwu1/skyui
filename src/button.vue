@@ -1,5 +1,7 @@
 <template>
-    <button  :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
+    <button
+            v-wave="wave"
+            :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
             class="g-button"
     >
         <g-icon :name="icon" class="icon" v-if='icon&&!isLoading'></g-icon>
@@ -11,10 +13,14 @@
     </button>
 </template>
 <script>
+    import Wave from "./wave.js"
     import Icon from "./icon"
     export default {
         components:{
             'g-icon':Icon
+        },
+        directives:{
+            wave:Wave
         },
         props: {
             icon: {},
@@ -24,6 +30,10 @@
                 validator(value) {
                     return ['left', 'right'].includes(value)
                 }
+            },
+            wave:{
+                type:String,
+                default:'#000'
             },
             isLoading: {
                 type: Boolean,
@@ -61,7 +71,7 @@
         align-items: center;
         vertical-align: middle;
         /*position: relative;*/
-        overflow: hidden;
+        /*overflow: hidden;*/
         .rippling{
             position: absolute;
             width:100%;

@@ -9,7 +9,8 @@ const handleClick=(e,el,binding)=>{
 
     let waveDom = el.querySelector('.waveWrap')
     if(!waveDom){
-        let {position} = window.getComputedStyle(el)
+        let {position,overflow} = window.getComputedStyle(el)
+        if(overflow!='hidden') el.style.overflow='hidden'
         if(position==='static')el.style.position='relative'
         waveDom=document.createElement('div')
         waveDom.classList.add('waveWrap','animate')
