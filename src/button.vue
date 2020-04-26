@@ -1,5 +1,5 @@
 <template>
-    <button :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
+    <button v-wave='"red"' :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
             class="g-button"
     >
         <g-icon :name="icon" class="icon" v-if='icon&&!isLoading'></g-icon>
@@ -7,6 +7,7 @@
         <div class="content">
             <slot></slot>
         </div>
+
     </button>
 </template>
 <script>
@@ -28,7 +29,15 @@
                 type: Boolean,
                 default: false,
             }
-        }
+        },
+        data(){
+            return {
+             styleObj:{
+                 top:0,
+                 left:0
+             }
+            }
+        },
     }
 </script>
 <style lang="scss">
@@ -41,10 +50,6 @@
         }
     }
 
-    .loading {
-        animation: spin 1s infinite linear
-    }
-
     .g-button {
         font-size: var(--font-size);
         padding: 0.5em 1em;
@@ -55,7 +60,16 @@
         justify-content: center;
         align-items: center;
         vertical-align: middle;
-
+        position: relative;
+        overflow: hidden;
+        .rippling{
+            position: absolute;
+            width:100%;
+            height:100%;
+            background: var(--border-hover-color);
+            transform:scale(0);
+            animation: ripples 1s linear;
+        }
         &:hover {
             border-color: var(--border-hover-color)
         }

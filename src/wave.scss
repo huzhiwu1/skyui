@@ -1,0 +1,19 @@
+.waveWrap{
+  width:100px;
+  height:100px;
+  position: absolute;
+  border-radius:50%;
+  background: #000;
+  opacity: 0.1;
+  transform: scale(0);
+  transform-origin: center center;
+}
+.animate{
+  animation: waveAnimation 1s linear;
+}
+@keyframes waveAnimation {
+  100%{
+    transform: scale(1.2);
+    background-color: transparent;
+  }
+}
