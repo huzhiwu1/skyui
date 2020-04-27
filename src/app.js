@@ -11,6 +11,7 @@ new Vue({
     el:'#app',
     data(){
         return{
+            message:"89",
             loading:false
         }
     }

@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper" :class="{error}">
         <input :value="value" :disabled="disabled" :readonly="readonly"
-            @change="$emit('change',$event)"
-            @focus="$emit('focus',$event)"
-            @blur="$emit('blur',$event)"
-            @input="$emit('input',$event)"
+            @change="triggerEvent('change',$event)"
+            @focus="triggerEvent('focus',$event)"
+            @blur="triggerEvent('blur',$event)"
+            @input="triggerEvent('input',$event)"
         >
         <template v-if="error">
             <g-icon name="error" class="fillRed"></g-icon>
@@ -17,6 +17,10 @@
     import Icon from './icon'
     export default {
         name: "g-input",
+        model:{
+            prop:'value',
+            event:'changeValue'
+        },
         components:{
             'g-icon':Icon
         },
@@ -35,7 +39,12 @@
             error:{
                 type:String,
             }
-
+        },
+        methods:{
+            triggerEvent(eventName,event){
+                this.$emit(eventName,event)
+                this.$emit('changeValue',event.target.value)
+            }
         }
     }
 </script>
