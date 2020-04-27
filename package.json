@@ -1,11 +1,12 @@
 {
-  "name": "skyui",
-  "version": "0.0.1",
+  "name": "skyui-vue-huzhiwu",
+  "version": "0.0.4",
   "description": "这是一个ui框架",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-minify && karma start --single-run"
+    "test": "parcel build test/* --no-minify && karma start --single-run",
+    "build": "parcel build index.js --no-cache --no-minify"
   },
   "repository": {
     "type": "git",

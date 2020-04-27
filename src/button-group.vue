@@ -23,6 +23,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        vertical-align: middle;
        .g-button{
             border-radius:0;
             &:first-child{
