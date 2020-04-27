@@ -1,20 +1,24 @@
 <template>
     <div class="wrapper" :class="{error}">
-        <input :value="value" :disabled="disabled" :readonly="readonly" ></input>
+        <input :value="value" :disabled="disabled" :readonly="readonly"
+            @change="$emit('change',$event)"
+            @focus="$emit('focus',$event)"
+            @blur="$emit('blur',$event)"
+            @input="$emit('input',$event)"
+        >
         <template v-if="error">
-            <icon  name="error" class="fillRed"></icon>
-            <span>{{error}}</span>
+            <g-icon name="error" class="fillRed"></g-icon>
+            <span class="message">{{error}}</span>
         </template>
-
     </div>
 </template>
 
 <script>
     import Icon from './icon'
     export default {
-        name: "input",
+        name: "g-input",
         components:{
-            icon:Icon
+            'g-icon':Icon
         },
         props:{
             value:{

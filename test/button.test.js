@@ -106,4 +106,5 @@ describe('Button', () => {
         vm.$el.remove()
         vm.$destroy()
     })
+
 })
