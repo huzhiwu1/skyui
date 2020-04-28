@@ -27,14 +27,48 @@
     </style>
 </head>
 <body>
+
     <div id="app">
+        <div style="margin:-10px">10</div>
+        <g-row>
+            <g-col>1</g-col>
+            <g-col>2</g-col>
+            <g-col>3</g-col>
+            <g-col>4</g-col>
+            <g-col>5</g-col>
+        </g-row>
+        <g-row>
+            <g-col :span="3">3</g-col>
+            <g-col :span="6">6</g-col>
+            <g-col :span="9">9</g-col>
+            <g-col :span="2">2</g-col>
+            <g-col :span="4">4</g-col>
+        </g-row>
+        <g-row>
+            <g-col :span="6" offset="3">6</g-col>
+            <g-col :span="9">9</g-col>
+            <g-col :span="4" offset="2">4</g-col>
+        </g-row>
+        <g-row>
+            <g-col :span="1" >logo</g-col>
+            <g-col  offset="2">11</g-col>
+        </g-row>
+        <g-row>
+            <g-col>00</g-col>
+        </g-row>
+        <g-row :gutter="10">
+            <g-col>1</g-col>
+            <g-col>2</g-col>
+            <g-col>3</g-col>
+            <g-col>4</g-col>
+        </g-row>
         <div class="box">
             <g-input v-model="message"></g-input>
             {{message}}
             <g-input disabled value="禁止"></g-input>
             <g-input readonly value="readonly"></g-input>
         </div>
-        <g-button  icon="left">按钮</g-button>
+        <g-button icon="left">按钮</g-button>
         <g-button icon="right" icon-position="right">按钮</g-button>
         <g-button icon="download" icon-position="left">左按钮</g-button>
         <g-button icon="download" icon-position="up">按钮</g-button>
