@@ -55,18 +55,20 @@
         },
         computed:{
             colClass(){
+                let x = (obj,str)=>{
+                    return[
+                        obj&&obj.span&&`col-${str}${obj.span}`,
+                        obj&&obj.offset&&`offset-${str}${obj.offset}`
+                    ]
+                }
                 const {span,offset,phone,ipad,narrowPc,pc,widePc}  = this
-                return[span&&`col-${span}`,offset&&`offset-${offset}`,
-                    phone&&phone.span&&`col-phone-${phone.span}`,
-                    phone&&phone.offset&&`offset-phone-${phone.offset}`,
-                    ipad&&ipad.span&&`col-ipad-${ipad.span}`,
-                    ipad&&ipad.offset&&`offset-ipad-${ipad.offset}`,
-                    narrowPc&&narrowPc.span&&`col-narrow-pc-${narrowPc.span}`,
-                    narrowPc&&narrowPc.offset&&`offset-narrow-pc-${narrowPc.offset}`,
-                    pc&&pc.span&&`col-pc-${pc.span}`,
-                    pc&&pc.offset&&`offset-pc-${pc.offset}`,
-                    widePc&&widePc.span&&`col-wide-pc-${widePc.span}`,
-                    widePc&&widePc.offset&&`offset-wide-pc-${widePc.offset}`,
+                return[
+                    ...x({span,offset}),
+                    ...x(phone,'phone-'),
+                    ...x(ipad,'ipad-'),
+                    ...x(narrowPc,'narrow-pc-'),
+                    ...x(pc,'pc-'),
+                    ...x(widePc,'wide-pc')
                 ]
             }
         }
@@ -74,7 +76,7 @@
 </script>
 <style lang="scss" scoped>
     .col {
-        $class-prefix: 'col-';
+        $col-prefix: 'col-';
         $oneWidth: 100%/24;
         $offset-prefix: 'offset-';
         $gutter-prefix: "gutter-";
@@ -88,7 +90,7 @@
         }
 
         @for $i from 1 through 24 {
-            &.#{$class-prefix}#{$i} {
+            &.#{$col-prefix}#{$i} {
                 width: $i*$oneWidth;
                 max-width: $i*$oneWidth;
                 min-width: $i*$oneWidth;
@@ -101,7 +103,7 @@
         }
         //phone和span是一样的样式
         @for $i from 1 through 24{
-            &.#{$class-prefix}phone-#{$i}{
+            &.#{$col-prefix}phone-#{$i}{
                 width: $i*$oneWidth;
                 max-width: $i*$oneWidth;
                 min-width: $i*$oneWidth;
@@ -112,9 +114,9 @@
                 margin-left: $oneWidth*$i
             }
         }
-        @media(min-width:576px){
+        @media (min-width:576px) {
             @for $i from 1 through 24{
-                &.#{$class-prefix}ipad-#{$i}{
+                &.#{$col-prefix}ipad-#{$i}{
                     width: $i*$oneWidth;
                     max-width: $i*$oneWidth;
                     min-width: $i*$oneWidth;
@@ -128,21 +130,21 @@
         }
         @media(min-width:768px){
             @for $i from 1 through 24{
-                &.#{$class-prefix}arrow-pc-#{$i}{
+                &.#{$col-prefix}narrow-pc-#{$i}{
                     width: $i*$oneWidth;
                     max-width: $i*$oneWidth;
                     min-width: $i*$oneWidth;
                 }
             }
             @for $i from 1 through 24{
-                &.#{$offset-prefix}arrow-pc-#{$i}{
+                &.#{$offset-prefix}narrow-pc-#{$i}{
                     margin-left: $oneWidth*$i
                 }
             }
         }
         @media(min-width:992px){
             @for $i from 1 through 24{
-                &.#{$class-prefix}pc-#{$i}{
+                &.#{$col-prefix}pc-#{$i}{
                     width: $i*$oneWidth;
                     max-width: $i*$oneWidth;
                     min-width: $i*$oneWidth;
@@ -156,7 +158,7 @@
         }
         @media(min-width:1200px){
             @for $i from 1 through 24{
-                &.#{$class-prefix}wide-pc-#{$i}{
+                &.#{$col-prefix}wide-pc-#{$i}{
                     width: $i*$oneWidth;
                     max-width: $i*$oneWidth;
                     min-width: $i*$oneWidth;

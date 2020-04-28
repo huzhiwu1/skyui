@@ -24,75 +24,27 @@
         .box{
             margin:20px;
         }
+        .demo{
+            background-color: #333;
+            border:1px solid red;
+            height:100px;
+        }
     </style>
 </head>
 <body>
 
     <div id="app">
-        <div style="margin:-10px">10</div>
         <g-row>
-            <g-col>1</g-col>
-            <g-col>2</g-col>
-            <g-col>3</g-col>
-            <g-col>4</g-col>
-            <g-col>5</g-col>
+            <g-col :phone="{span:10,offset:2}" :narrow-pc="{span:3,offset:3}">
+                <div class="demo"></div>
+            </g-col>
+            <g-col :phone="{span:10,offset:2}" :narrow-pc="{span:3,offset:3}">
+                <div class="demo"></div>
+            </g-col>
+            <g-col :phone="{span:10,offset:2}" :narrow-pc="{span:3,offset:3}">
+                <div class="demo"></div>
+            </g-col>
         </g-row>
-        <g-row>
-            <g-col :span="3">3</g-col>
-            <g-col :span="6">6</g-col>
-            <g-col :span="9">9</g-col>
-            <g-col :span="2">2</g-col>
-            <g-col :span="4">4</g-col>
-        </g-row>
-        <g-row>
-            <g-col :span="6" offset="3">6</g-col>
-            <g-col :span="9">9</g-col>
-            <g-col :span="4" offset="2">4</g-col>
-        </g-row>
-        <g-row>
-            <g-col :span="1" >logo</g-col>
-            <g-col  offset="2">11</g-col>
-        </g-row>
-        <g-row>
-            <g-col>00</g-col>
-        </g-row>
-        <g-row :gutter="10">
-            <g-col>1</g-col>
-            <g-col>2</g-col>
-            <g-col>3</g-col>
-            <g-col>4</g-col>
-        </g-row>
-        <g-row :gutter="10">
-            <g-col :phone="{span:2,offset:2}"
-                :ipad="{span:3,offset:3}"
-                   :narrow-pc="{span:4,offset:4}"
-                   :pc="{span:5,offset:5}"
-                   :wide-pc="{span:1,offset:1}"
-            ><div style="border:1px solid red">1</div></g-col>
-            <g-col :phone="{span:1,offset:1}"
-                   :ipad="{span:2,offset:2}"
-                   :narrow-pc="{span:3,offset:3}"
-                   :pc="{span:4,offset:4}"
-                   :wide-pc="{span:2,offset:2}"
-            ><div style="border:1px solid red">2</div></g-col>
-            <g-col :phone="{span:3,offset:3}"
-                   :ipad="{span:5,offset:5}"
-                   :narrow-pc="{span:6,offset:6}"
-                   :pc="{span:2,offset:2}"
-                   :wide-pc="{span:1,offset:1}"
-            ><div style="border:1px solid red">3</div></g-col>
-        </g-row>
-
-        <div class="box">
-            <g-input v-model="message"></g-input>
-            {{message}}
-            <g-input disabled value="禁止"></g-input>
-            <g-input readonly value="readonly"></g-input>
-        </div>
-        <g-button icon="left">按钮</g-button>
-        <g-button icon="right" icon-position="right">按钮</g-button>
-        <g-button icon="download" icon-position="left">左按钮</g-button>
-        <g-button icon="download" icon-position="up">按钮</g-button>
     </div>
     <script src="./src/app.js"></script>
 </body>
