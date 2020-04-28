@@ -25,7 +25,6 @@
 </script>
 <style lang="scss" scoped>
     .col {
-        width: 100%;
         $class-prefix: 'col-';
         $oneWidth: 100%/24;
         $offset-prefix: 'offset-';
