@@ -55,7 +55,7 @@
         },
         computed:{
             colClass(){
-                let x = (obj,str)=>{
+                let x = (obj,str='')=>{
                     return[
                         obj&&obj.span&&`col-${str}${obj.span}`,
                         obj&&obj.offset&&`offset-${str}${obj.offset}`
@@ -68,7 +68,7 @@
                     ...x(ipad,'ipad-'),
                     ...x(narrowPc,'narrow-pc-'),
                     ...x(pc,'pc-'),
-                    ...x(widePc,'wide-pc')
+                    ...x(widePc,'wide-pc-')
                 ]
             }
         }
