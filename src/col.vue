@@ -99,21 +99,20 @@
                 margin-left: $oneWidth*$i
             }
         }
-        @media(max-width:576px){
-            @for $i from 1 through 24{
-                &.#{$class-prefix}phone-#{$i}{
-                    width: $i*$oneWidth;
-                    max-width: $i*$oneWidth;
-                    min-width: $i*$oneWidth;
-                }
-            }
-            @for $i from 1 through 24{
-                &.#{$offset-prefix}phone-#{$i}{
-                    margin-left: $oneWidth*$i
-                }
+        //phone和span是一样的样式
+        @for $i from 1 through 24{
+            &.#{$class-prefix}phone-#{$i}{
+                width: $i*$oneWidth;
+                max-width: $i*$oneWidth;
+                min-width: $i*$oneWidth;
             }
         }
-        @media(min-width:577px)and(max-width:768px){
+        @for $i from 1 through 24{
+            &.#{$offset-prefix}phone-#{$i}{
+                margin-left: $oneWidth*$i
+            }
+        }
+        @media(min-width:576px){
             @for $i from 1 through 24{
                 &.#{$class-prefix}ipad-#{$i}{
                     width: $i*$oneWidth;
@@ -127,21 +126,21 @@
                 }
             }
         }
-        @media(min-width:769px)and(max-width:992px){
+        @media(min-width:768px){
             @for $i from 1 through 24{
-                &.#{$class-prefix}narrow-pc-#{$i}{
+                &.#{$class-prefix}arrow-pc-#{$i}{
                     width: $i*$oneWidth;
                     max-width: $i*$oneWidth;
                     min-width: $i*$oneWidth;
                 }
             }
             @for $i from 1 through 24{
-                &.#{$offset-prefix}narrow-pc-#{$i}{
+                &.#{$offset-prefix}arrow-pc-#{$i}{
                     margin-left: $oneWidth*$i
                 }
             }
         }
-        @media(min-width:993px)and(max-width:1200px){
+        @media(min-width:992px){
             @for $i from 1 through 24{
                 &.#{$class-prefix}pc-#{$i}{
                     width: $i*$oneWidth;
@@ -155,7 +154,7 @@
                 }
             }
         }
-        @media(min-width:1201px){
+        @media(min-width:1200px){
             @for $i from 1 through 24{
                 &.#{$class-prefix}wide-pc-#{$i}{
                     width: $i*$oneWidth;
