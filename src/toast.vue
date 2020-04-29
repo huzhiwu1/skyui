@@ -64,6 +64,18 @@
 </script>
 
 <style scoped lang="scss">
+    @each $name in 'topRun','bottomRun','middleRun'{
+        @keyframes #{$name} {
+            0%{
+                opacity:if($name=='middleRun',0,1);
+               transform: translate(-50%,if($name=='bottomRun',100%,if($name=='topRun',-100%,-50%)))
+            }
+            100%{
+                transform: translate(-50%,if($name=='middleRun',-50%,0%));
+                opacity:1
+            }
+        }
+    }
     $bg:#eaffff;
     $border-color:#b4f2ff;
     .g-toast{
@@ -90,16 +102,19 @@
             top:0;
             left:50%;
             transform: translateX(-50%);
+            animation: topRun 1s linear;
         }
         &.bottom{
             bottom:0;
             left:50%;
             transform: translateX(-50%);
+            animation: bottomRun 1s linear;
         }
         &.middle{
             top:50%;
             left:50%;
             transform: translate(-50%,-50%);
+            animation: middleRun 1s linear;
         }
     }
 </style>
