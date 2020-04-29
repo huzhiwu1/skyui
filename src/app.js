@@ -10,6 +10,10 @@ import Content from "./content"
 import Sider from "./sider"
 import Header from "./header"
 import Footer from "./footer"
+import Toast from "./toast"
+import plugin from "./plugin"
+Vue.use(plugin)
+Vue.component('g-toast',Toast)
 Vue.component('g-layout',Layout)
 Vue.component('g-content',Content)
 Vue.component('g-sider',Sider)
@@ -28,6 +32,20 @@ new Vue({
             message:"89",
             loading:false
         }
+    },
+    methods:{
+        showToast(){
+            this.$toast('展示信息 ',{
+                closeButton: {
+                    text:"关了",
+                    callback: (vm)=>console.log(vm)
+                },
+                waitTime:5000
+            })
+        }
+    },
+    mounted(){
+        this.showToast()
     }
 })
 // import chai from "chai"
