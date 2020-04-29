@@ -18,45 +18,43 @@
             --border-color: #b4f2ff;
             --border-hover-color:#ADEBFF;
         }
-        #app{
-            margin:20px;
-        }
-        .box{
-            margin:20px;
+        /*#app{*/
+        /*    margin:20px;*/
+        /*}*/
+        html,body,#app{
+            height:100%
         }
         .demo{
-            background-color: #333;
-            border:1px solid red;
             height:100px;
+            border:1px solid #000;
+            text-align:center;
+        }
+        .container{
+            height:100%
         }
     </style>
 </head>
 <body>
 
     <div id="app">
-        <g-row :gutter="120">
-            <g-col :phone="{span:10,offset:2}" :narrow-pc="{span:3,offset:3}">
-                <div class="demo"></div>
-            </g-col>
-            <g-col :phone="{span:10,offset:2}" :narrow-pc="{span:3,offset:3}">
-                <div class="demo"></div>
-            </g-col>
-            <g-col :phone="{span:10,offset:2}" :narrow-pc="{span:3,offset:3}">
-                <div class="demo"></div>
-            </g-col>
-        </g-row>
-        <g-row>
-            <g-col :phone="{span:24,offset:0}" :narrow-pc="{span:3,offset:3}">
-                <div class="demo"></div>
-            </g-col>
-            <g-col :phone="{span:12,offset:0}" :narrow-pc="{span:3,offset:3}">
-                <div class="demo"></div>
-            </g-col>
-            <g-col :phone="{span:12,offset:0}" :narrow-pc="{span:3,offset:3}">
-                <div class="demo"></div>
-            </g-col>
-        </g-row>
+<!--       <g-layout class="container">-->
+<!--           <g-header class="demo">header</g-header>-->
+<!--           <g-content class="demo">content</g-content>-->
+<!--           <g-footer class="demo">footer</g-footer>-->
+<!--       </g-layout>-->
+        <g-layout class="container">
+            <g-sider class="demo">sider</g-sider>
+
+            <g-layout>
+                <g-header class="demo">header</g-header>
+                <g-content class="demo">content</g-content>
+                <g-footer class="demo">footer</g-footer>
+            </g-layout>
+
+
+        </g-layout>
     </div>
     <script src="./src/app.js"></script>
 </body>
 </html>
+

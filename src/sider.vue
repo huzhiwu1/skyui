@@ -1,12 +1,12 @@
 <template>
-    <div class="g-header">
+    <div class="g-sider">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: "g-header"
+        name: "g-sider"
     }
 </script>
 
