@@ -1,5 +1,5 @@
 <template>
-    <div class="g-toast">
+    <div class="g-toast" :class="addToastClass">
         <slot></slot>
         <div class="col"></div>
         <div v-if="closeButton" class="closeButton" @click="handleClose">{{closeButton.text}}</div>
@@ -10,6 +10,13 @@
     export default {
         name: "g-toast",
         props:{
+            toastPosition:{
+              type:String,
+              default:"top",
+              validator(value){
+                  return ['top','bottom','middle'].indexOf(value)>-1
+              }
+            },
             waitTime:{
                 type:[Number,String],
                 default:'2000'
@@ -39,9 +46,14 @@
                 }
             }
         },
+        computed:{
+            addToastClass(){
+                return [this.toastPosition]
+            }
+        },
         mounted(){
-            const {autoClose,waitTime} = this;
-            if(autoClose){
+            const {autoClose,waitTime,closeButton} = this;
+            if(autoClose&&!closeButton.callback){
                 setTimeout(()=>{
                     this.close()
                 },+waitTime)
@@ -55,9 +67,6 @@
     $border-color:#b4f2ff;
     .g-toast{
         position: fixed;
-        top:0;
-        left:50%;
-        transform: translateX(-50%);
         border-radius:0.4em;
         display: flex;
         justify-content: center;
@@ -65,6 +74,7 @@
         background-color:$bg ;
         align-items: center;
         padding:10px;
+        box-shadow:0px 3px 3px #f0f0f0;
         .col{
             margin-top:-10px;
             margin-bottom:-10px;
@@ -74,6 +84,21 @@
             /*height:100%;*/
             width:1px;
             background-color: $border-color;
+        }
+        &.top{
+            top:0;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        &.bottom{
+            bottom:0;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        &.middle{
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
         }
     }
 </style>

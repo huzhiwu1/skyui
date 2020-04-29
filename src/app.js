@@ -35,12 +35,13 @@ new Vue({
     },
     methods:{
         showToast(){
-            this.$toast('展示信息 ',{
+            this.$toast('展示信息,展示信息,展示信息,展示信息,展示信息,展示信息,展示信息,展示信息',{
                 closeButton: {
                     text:"关了",
                     callback: (vm)=>console.log(vm)
                 },
-                waitTime:5000
+                waitTime:5000,
+                toastPosition: 'bottom'
             })
         }
     },
