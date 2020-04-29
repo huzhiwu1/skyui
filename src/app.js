@@ -45,9 +45,6 @@ new Vue({
             })
         }
     },
-    mounted(){
-        this.showToast()
-    }
 })
 // import chai from "chai"
 // import spies from 'chai-spies'
