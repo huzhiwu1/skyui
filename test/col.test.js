@@ -32,7 +32,6 @@ describe(' Col组件',()=>{
         }).$mount()
         setTimeout(()=>{
             let col = vm.$el.querySelector('.col')
-            console.log(col.classList);
             expect(col.classList.contains('col-12')).to.be.true
             done()
         },0)
@@ -92,7 +91,6 @@ describe(' Col组件',()=>{
         }).$mount()
         setTimeout(() => {
             let col = vm.$el.querySelector('.col')
-            console.log(col)
             expect(col.classList.contains(`col-${name}-12`)).to.be.true
             expect(col.classList.contains(`offset-${name}-12`)).to.be.true
             done()

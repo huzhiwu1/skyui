@@ -97,7 +97,7 @@ new Vue({
 //                 icon:'setting'
 //             }
 //         })
-//         button.$mount(div)
+//         buttocn.$mount(div)
 //         let svg = button.$el.querySelector('svg')
 //         let {order} = window.getComputedStyle(svg)
 //         expect(order).to.eq('1')
