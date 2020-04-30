@@ -36,7 +36,7 @@ describe('toast组件',()=>{
         setTimeout(()=>{
             expect(document.body.contains(vm.$el)).to.be.true
             done()
-        },1000)
+        },300)
     })
     it('接收closeButton',()=>{
         let div = document.createElement('div')
@@ -55,5 +55,13 @@ describe('toast组件',()=>{
         expect(text).to.equal('close')
         vm.$el.querySelector('.closeButton').click()
         expect(callback).to.have.been.called
+    })
+    it('接收toastPosition',()=>{
+        let div = document.createElement('div')
+        document.body.appendChild(div)
+        vm = new Constructor({
+            toastPosition: 'top'
+        }).$mount()
+        expect(vm.$el.classList.contains('top')).to.be.true
     })
 })
