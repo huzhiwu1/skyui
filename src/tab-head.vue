@@ -1,6 +1,10 @@
 <script>
+    import TabBar from "./tab-bar"
     export default {
         name:'g-tab-head',
+        components:{
+            TabBar
+        },
         props:{
             panes:Array,
             selected:{
@@ -17,13 +21,13 @@
             }=this
 
             let tabs = this._l(panes,(pane,index)=>{
-                console.log(pane.componentInstance.$slots.label)
-                return <div class={{'g-tab-head':true,'active':index===selected}} on-click={()=>handleClick(index)}>
+                return <div class={{'g-tab-head':true,'active':index===selected}}  on-click={()=>handleClick(index)}>
                    {pane.componentInstance.$slots.label||pane.componentInstance.$options.propsData.label}
                </div>
            })
-           return <div class="g-tab-heads">
+           return <div class="g-tab-heads" ref="tabs">
                {[tabs]}
+               <tab-bar panes={panes}/>
                 </div>
        },
         methods:{

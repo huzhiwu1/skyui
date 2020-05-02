@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-       <g-tabs :selected.sync="index" direction="vertical">
+       <g-tabs :selected.sync="index" >
            <g-tab-pane label="1234">
 <!--           <template v-slot:label><div>slotdivone</div></template>-->
                componenteOne
@@ -33,6 +33,7 @@
            <g-tab-pane label="four">contentFour</g-tab-pane>
        </g-tabs>
     </div>
+
     <script src="./src/app.js"></script>
 </body>
 </html>

@@ -33,11 +33,11 @@
             }
         },
         mounted(){
-            console.log(this.$options)
+
 
             this.panes = this.$slots.default.filter(vnode=>vnode.tag&&vnode.componentOptions&&vnode.componentOptions.Ctor.options.name==='g-tab-pane')
             this.panes.forEach((item,index)=>{
-                console.log(index,item)
+
                 item.componentInstance.index=index
             })
             this.eventBus.$on('changTabIndex',(index)=>{

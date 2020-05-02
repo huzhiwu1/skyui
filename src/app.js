@@ -39,7 +39,7 @@ new Vue({
         return{
             message:"89",
             loading:false,
-            index:0,
+            index:3,
         }
     },
     methods:{
