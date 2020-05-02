@@ -23,7 +23,15 @@
 </head>
 <body>
     <div id="app">
-        <button @click="showToast">点我</button>
+       <g-tabs :selected.sync="index" direction="vertical">
+           <g-tab-pane label="1234">
+<!--           <template v-slot:label><div>slotdivone</div></template>-->
+               componenteOne
+           </g-tab-pane>
+           <g-tab-pane label="two">contentTwo</g-tab-pane>
+           <g-tab-pane label="three">contentThree</g-tab-pane>
+           <g-tab-pane label="four">contentFour</g-tab-pane>
+       </g-tabs>
     </div>
     <script src="./src/app.js"></script>
 </body>

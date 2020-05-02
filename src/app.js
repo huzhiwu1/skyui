@@ -12,6 +12,14 @@ import Header from "./header"
 import Footer from "./footer"
 import Toast from "./toast"
 import plugin from "./plugin"
+import Tabs from "./tabs"
+import TabHead from "./tab-head"
+import TabPane from "./tab-pane"
+Vue.component('g-tabs',Tabs)
+
+Vue.component('g-tab-head',TabHead)
+
+Vue.component('g-tab-pane',TabPane)
 Vue.use(plugin)
 Vue.component('g-toast',Toast)
 Vue.component('g-layout',Layout)
@@ -30,7 +38,8 @@ new Vue({
     data(){
         return{
             message:"89",
-            loading:false
+            loading:false,
+            index:0,
         }
     },
     methods:{
