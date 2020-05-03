@@ -15,7 +15,8 @@ $hover-color:#adebff;
     align-content: center;
     position: relative;
     .g-tab-head{
-      padding:10px;
+      margin:10px;
+      //padding:10px;
       //border:1px solid $border-color;
       cursor:pointer;
       &:first-child{
