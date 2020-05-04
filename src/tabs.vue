@@ -33,12 +33,12 @@
             }
         },
         mounted(){
-            if(this.$children.length===0){
-                throw new Error('tabs的自组件应该是tab-pane,但你没有写自组件')
+            if(this.$slots.default.length===0){
+               throw new Error('tabs的自组件应该是tab-pane,但你没有写子组件')
             }
-            this.$children.forEach(vm=>{
-                if(vm.$options.name!=='g-tab-pane'){
-                    throw new Error('tabs的自组件只能是tab-pane')
+            this.$slots.default.forEach(vnode=>{
+                if(vnode.componentOptions&&vnode.componentOptions.Ctor.options.name!=='g-tab-pane'){
+                   throw new Error('tabs的自组件只能是tab-pane')
                 }
             })
 
