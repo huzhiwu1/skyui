@@ -18,12 +18,16 @@
             --border-color: #b4f2ff;
             --border-hover-color:#ADEBFF;
         }
+        #app{
+            margin:20px;
+        }
 
     </style>
 </head>
 <body>
+<div class="war" style="border:10px solid #000"></div>
     <div id="app">
-       <g-tabs :selected="1" direction="vertical">
+       <g-tabs :selected.sync="index" >
            <g-tab-pane label="1234">
 <!--           <template v-slot:label><div>slotdivone</div></template>-->
                componenteOne

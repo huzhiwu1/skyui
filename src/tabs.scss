@@ -28,7 +28,7 @@ $hover-color:#adebff;
         border-bottom-right-radius: $border-radius;
       }
       &:not(:first-child){
-        margin-left:-1px;
+        //margin-left:-1px;
       }
       &:hover{
         color:$hover-color
