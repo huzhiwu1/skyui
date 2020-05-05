@@ -15,10 +15,11 @@
                 let style={}
                 this.panes.forEach((item,index)=>{
                     if(index===this.$parent.selected){
-                       let {width} = window.getComputedStyle(this.$parent.$refs.tabs.querySelector('.g-tab-head.active'))
+                       const {width}=this.$parent.$refs.tabs.querySelector('.g-tab-head.active').getBoundingClientRect()
+                       // let {width} = window.getComputedStyle(this.$parent.$refs.tabs.querySelector('.g-tab-head.active'))
                         let {offsetLeft}=this.$parent.$refs.tabs.querySelector('.g-tab-head.active')
-
-                        style={'width':width,'transform':`translate(${offsetLeft}px)`}
+                        console.log(offsetLeft);
+                        style={'width':width+'px','transform':`translate(${offsetLeft}px)`}
                     }
                 })
 
