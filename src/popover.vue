@@ -31,7 +31,34 @@
         },
         methods:{
             style(key){
-                console.log(key,'key')
+                document.body.appendChild(this.$refs.contentWrapper)
+                let {left,top,bottom,right} = this.$refs.triggerWrapper.getBoundingClientRect()
+                let {width,height} = this.$refs.contentWrapper.getBoundingClientRect()
+                let bodyHeight = document.body.clientHeight;
+                let bodyWidth = document.body.clientWidth
+                if(key==='top'){
+                    if(top<height+12){
+                        key='bottom'
+                    }
+                }
+                if(key==='bottom'){
+                    if(bodyHeight-bottom<height+12){
+                        key='top'
+                    }
+                }
+                if(key==='left'){
+                    if(left<width+12){
+                        key='right'
+                    }
+                }
+                if(key==='right'){
+                    console.log(bodyWidth-right,width+12)
+                    if(bodyWidth-right<width+12){
+                        key='left'
+
+                    }
+                }
+                this.position=key
                 return this[`${key+'Style'}`]()
             },
             bottomStyle(){
@@ -80,7 +107,7 @@
                 let style = this.style(this.position)
                 this.$refs.contentWrapper.style.top=style.top
                 this.$refs.contentWrapper.style.left=style.left
-                document.body.appendChild(this.$refs.contentWrapper)
+
             },
             handleClick(e){
                 //如果点击的是button，切换显示content
@@ -121,6 +148,7 @@
         border-radius:.3em;
         background-color:#fff;
         max-width:10em;
+        min-width:5em;
         filter: drop-shadow(0 1px 2px #707070);
         word-break:break-all;
 
@@ -130,7 +158,7 @@
             display:block;
             width:0;
             height:0;
-            border:1em solid transparent;
+            border:12px solid transparent;
 
 
         }
@@ -140,10 +168,10 @@
             display:block;
             width:0;
             height:0;
-            border:1em solid transparent;
+            border:12px solid transparent;
         }
         &.bottom{
-            margin-top:1.1em;
+            margin-top:12px;
             transform:translateX(-50%);
             ::after{
                 top:0;
@@ -163,7 +191,7 @@
             }
         }
         &.top{
-            transform: translate(-50%,calc( -100% - 1.1em));
+            transform: translate(-50%,calc( -100% - 12px));
             ::after{
                 bottom:0;
                 left:50%;
@@ -181,7 +209,7 @@
             }
         }
         &.left{
-            transform: translate(calc( -100% - 1.1em),-50%);
+            transform: translate(calc( -100% - 12px),-50%);
             ::after{
                 top:50%;
                 right:0;
@@ -201,7 +229,7 @@
             }
         }
         &.right{
-            transform: translate( 1.1em,-50%);
+            transform: translate( 12px,-50%);
             ::after{
                 top:50%;
                 left:0;
