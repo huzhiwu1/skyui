@@ -19,9 +19,12 @@
             --border-hover-color:#ADEBFF;
         }
         #app{
-            margin:20px;
+            margin:150px;
         }
-
+        html,body{
+            padding:10px;
+            height:100%;
+        }
     </style>
 </head>
 <body>
@@ -33,13 +36,30 @@
             </template>
             <g-button>按钮1</g-button>
         </g-popover>
-        <g-popover>
+        <g-popover position="top">
             <template v-slot:content>
-                <div>我是内容2</div>
+                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>
             </template>
-            <g-button>按钮2</g-button>
+            <g-button >top</g-button>
         </g-popover>
-
+        <g-popover position="left">
+            <template v-slot:content>
+                <div>;naweuofsnb oiuanoi</div>
+            </template>
+            <g-button>left</g-button>
+        </g-popover>
+        <g-popover position="right">
+            <template v-slot:content>
+                <div>1243124agbrwev;naweuofsnb oiuanoi</div>
+            </template>
+            <g-button>right</g-button>
+        </g-popover>
+        <g-popover position="bottom">
+            <template v-slot:content>
+                <div>1243124agbrwev;naweuofsnb oiuanoi</div>
+            </template>
+            <g-button>bottom</g-button>
+        </g-popover>
     </div>
 
     <script src="./src/app.js"></script>

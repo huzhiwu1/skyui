@@ -1,6 +1,7 @@
 <template>
     <div class="g-popover" @click="handleClick" ref="popoverWrapper">
-        <div class="contentWrapper" ref="contentWrapper" v-if="showContent">
+        <div class="contentWrapper":class="{[position]:true}"
+             ref="contentWrapper" v-if="showContent">
             <slot name="content"></slot>
         </div>
         <span class="triggerWrapper" ref="triggerWrapper">
@@ -17,9 +18,50 @@
                 showContent:false
             }
         },
+        props:{
+            position:{
+                type:String,
+                default:'bottom' ,
+                validator(value){
+                    return ['top','left','right','bottom'].indexOf(value)>=0
+                }
+            }
+        },
         mounted() {
         },
         methods:{
+            style(key){
+                console.log(key,'key')
+                return this[`${key+'Style'}`]()
+            },
+            bottomStyle(){
+                let {width,height,left,top} = this.$refs.triggerWrapper.getBoundingClientRect()
+                return {
+                    top:top+window.scrollY+height+'px',
+                    left:left+window.scrollX+width/2+'px'
+                }
+            },
+            topStyle(){
+                let {width,height,left,top} = this.$refs.triggerWrapper.getBoundingClientRect()
+                return {
+                    top:top+window.scrollY+'px',
+                    left:left+window.scrollX+width/2+'px'
+                }
+            },
+            leftStyle(){
+                let {width,height,left,top} = this.$refs.triggerWrapper.getBoundingClientRect()
+                return {
+                    top:top+window.scrollY+height/2+'px',
+                    left:left+window.scrollX+'px'
+                }
+            },
+            rightStyle(){
+                let {width,height,left,top} = this.$refs.triggerWrapper.getBoundingClientRect()
+                return {
+                    top:top+window.scrollY+height/2+'px',
+                    left:left+window.scrollX+width+'px'
+                }
+            },
             listenDocument(e){
                 // 如果点击的事件源是popover则不响应
                 if(!(this.$refs.popoverWrapper&&
@@ -32,9 +74,12 @@
                 }
             },
             positionContent(){
-                let {width,height,left,top} = this.$refs.triggerWrapper.getBoundingClientRect()
-                this.$refs.contentWrapper.style.top=top+window.scrollX+height+'px'
-                this.$refs.contentWrapper.style.left=left+window.scrollY+'px'
+                // let {width,height,left,top} = this.$refs.triggerWrapper.getBoundingClientRect()
+                // this.$refs.contentWrapper.style.top=top+window.scrollY+height+'px'
+                // this.$refs.contentWrapper.style.left=left+window.scrollX+'px'
+                let style = this.style(this.position)
+                this.$refs.contentWrapper.style.top=style.top
+                this.$refs.contentWrapper.style.left=style.left
                 document.body.appendChild(this.$refs.contentWrapper)
             },
             handleClick(e){
@@ -58,6 +103,8 @@
 </script>
 
 <style scoped lang='scss'>
+    $border-color:#b4f2ff;
+
     .g-popover{
         display: inline-block;
         //span默认是display:inline,margin上下对其没有撑开的作用
@@ -66,8 +113,112 @@
         }
     }
     .contentWrapper{
+
         cursor:pointer;
         position: absolute;
-        border:1px solid #000;
+        padding:.5em;
+        border:1px solid $border-color;
+        border-radius:.3em;
+        background-color:#fff;
+        max-width:10em;
+        filter: drop-shadow(0 1px 2px #707070);
+        word-break:break-all;
+
+        ::after{
+            position: absolute;
+            content:"";
+            display:block;
+            width:0;
+            height:0;
+            border:1em solid transparent;
+
+
+        }
+        ::before{
+            position: absolute;
+            content:"";
+            display:block;
+            width:0;
+            height:0;
+            border:1em solid transparent;
+        }
+        &.bottom{
+            margin-top:1.1em;
+            transform:translateX(-50%);
+            ::after{
+                top:0;
+                left:50%;
+                /*left:1em;*/
+                /*left:50%;*/
+                transform: translate(-50%,calc( -100% + 1px));
+                border-bottom-color: #fff;
+
+            }
+            ::before{
+                top:0;
+                left:50%;
+                /*left:50%;*/
+                transform: translate(-50%,-100%);
+                border-bottom-color: $border-color;
+            }
+        }
+        &.top{
+            transform: translate(-50%,calc( -100% - 1.1em));
+            ::after{
+                bottom:0;
+                left:50%;
+                /*left:50%;*/
+                transform: translate(-50%,calc( 100% - 1px));
+                border-top-color: #fff;
+
+            }
+            ::before{
+                bottom:0;
+                left:50%;
+                /*left:50%;*/
+                transform: translate(-50%,100%);
+                border-top-color: $border-color;
+            }
+        }
+        &.left{
+            transform: translate(calc( -100% - 1.1em),-50%);
+            ::after{
+                top:50%;
+                right:0;
+                /*left:1em;*/
+                /*left:50%;*/
+                transform: translate(calc( 100% - 1px),-50%);
+                border-left-color: #fff;
+
+            }
+            ::before{
+                top:50%;
+                right:0;
+                /*left:1em;*/
+                /*left:50%;*/
+                transform: translate(100%,-50%);
+                border-left-color: $border-color;
+            }
+        }
+        &.right{
+            transform: translate( 1.1em,-50%);
+            ::after{
+                top:50%;
+                left:0;
+                /*left:1em;*/
+                /*left:50%;*/
+                transform: translate(calc( -100% + 1px),-50%);
+                border-right-color: #fff;
+
+            }
+            ::before{
+                top:50%;
+                left:0;
+                /*left:1em;*/
+                /*left:50%;*/
+                transform: translate(-100%,-50%);
+                border-right-color: $border-color;
+            }
+        }
     }
 </style>
