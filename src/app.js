@@ -15,6 +15,8 @@ import plugin from "./plugin"
 import Tabs from "./tabs"
 import TabHead from "./tab-head"
 import TabPane from "./tab-pane"
+import Popover from "./popover"
+Vue.component('g-popover',Popover)
 Vue.component('g-tabs',Tabs)
 
 Vue.component('g-tab-head',TabHead)

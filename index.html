@@ -25,17 +25,21 @@
     </style>
 </head>
 <body>
-<div class="war" style="border:10px solid #000"></div>
+
     <div id="app">
-       <g-tabs :selected.sync="index" >
-           <g-tab-pane label="1234">
-<!--           <template v-slot:label><div>slotdivone</div></template>-->
-               componenteOne
-           </g-tab-pane>
-           <g-tab-pane label="two">contentTwo</g-tab-pane>
-           <g-tab-pane label="three">contentThree</g-tab-pane>
-           <g-tab-pane label="four">contentFour</g-tab-pane>
-       </g-tabs>
+        <g-popover>
+            <template v-slot:content>
+                <div class="content2">我是内容</div>
+            </template>
+            <g-button>按钮1</g-button>
+        </g-popover>
+        <g-popover>
+            <template v-slot:content>
+                <div>我是内容2</div>
+            </template>
+            <g-button>按钮2</g-button>
+        </g-popover>
+
     </div>
 
     <script src="./src/app.js"></script>
