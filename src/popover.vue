@@ -1,7 +1,7 @@
 <template>
-    <div class="g-popover" @click="handleClick" ref="popoverWrapper">
+    <div class="g-popover" ref="popoverWrapper">
         <div class="contentWrapper":class="{[position]:true}"
-             ref="contentWrapper" v-if="showContent">
+             ref="contentWrapper" v-show="showContent">
             <slot name="content"></slot>
         </div>
         <span class="triggerWrapper" ref="triggerWrapper">
@@ -15,7 +15,8 @@
         name: "popover",
         data(){
             return {
-                showContent:false
+                showContent:false,
+                popoverElem:null,
             }
         },
         props:{
@@ -25,13 +26,58 @@
                 validator(value){
                     return ['top','left','right','bottom'].indexOf(value)>=0
                 }
+            },
+            trigger:{
+                type:String,
+                default:'click',
+                validator(value){
+                    return ['click','hover'].indexOf(value)>=0
+                }
             }
         },
+        watch:{
+          showContent(value){
+              if(value){
+                  // appendChildToBody
+                  this.createPopoper()
+              }
+          }
+        },
         mounted() {
+            if(this.trigger==='click'){
+                this.$refs.popoverWrapper.addEventListener('click',this.handleClick)
+            }
+            if(this.trigger==='hover'){
+                this.$refs.popoverWrapper.addEventListener('mouseenter',()=>{
+                   this.open()
+                })
+
+                this.$refs.contentWrapper.addEventListener('mouseenter',()=>{
+                    this.open()
+                })
+                this.$refs.contentWrapper.addEventListener('mouseleave',()=>{
+
+                    this.showContent=false
+                })
+                this.$refs.popoverWrapper.addEventListener('mouseleave',()=>{
+
+                   this.showContent=false
+                })
+                // this.$refs.contentWrapper.addEventListener('mouseleave',(e)=>{
+                //     console.log(e.target)
+                //     this.showContent=false
+                // })
+            }
         },
         methods:{
+            createPopoper(){
+                if(!this.popoperElem){
+                    this.popoperElem = this.$refs.contentWrapper
+                    document.body.appendChild(this.$refs.contentWrapper)
+                }
+            },
             style(key){
-                document.body.appendChild(this.$refs.contentWrapper)
+
                 let {left,top,bottom,right} = this.$refs.triggerWrapper.getBoundingClientRect()
                 let {width,height} = this.$refs.contentWrapper.getBoundingClientRect()
                 let bodyHeight = document.body.clientHeight;
@@ -96,7 +142,7 @@
                         ||this.$refs.popoverWrapper.contains(e.target)
                         ||this.$refs.contentWrapper.contains(e.target))
                 )){
-                    this.showContent=false;
+                    this.showContent=false
                     document.removeEventListener('click',this.listenDocument)
                 }
             },
@@ -109,16 +155,23 @@
                 this.$refs.contentWrapper.style.left=style.left
 
             },
+            open(){
+                this.showContent=true
+                this.positionContent()
+            },
+            // close(){
+            //   this.showContent=false
+            // },
             handleClick(e){
                 //如果点击的是button，切换显示content
                 if(this.$refs.triggerWrapper.contains(e.target)){
                     this.showContent=!this.showContent
                     // 如果是显示，给document添加事件，点击则关闭content
                     if(this.showContent){
-                        this.$nextTick(()=>{
+                        // this.$nextTick(()=>{
                             this.positionContent()
                             document.addEventListener('click',this.listenDocument)
-                        })
+                        // })
                     }else{
                         //消除document的事件
                         document.removeEventListener('click',this.listenDocument)
