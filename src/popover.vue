@@ -28,7 +28,7 @@
               }
           },
             showContent(value){
-              value?(this.createPopoper(),this.open()):this.close()
+              value?(this.createPopoper(),this.open()):''
               this.$emit('change',value)
             }
         },
@@ -175,13 +175,13 @@
 
             },
             open(){
-                console.log('打开')
+                // console.log('打开')
                 this.showContent=true
                 // this.$emit('change',this.showContent)
                 this.positionContent()
             },
             close(){
-                console.log('关闭')
+                // console.log('关闭')
               // this.close()
                 this.showContent=false
                 // this.$emit('change',this.showContent)
@@ -194,7 +194,7 @@
                     if(this.showContent){
                         // this.$nextTick(()=>{
                         //     this.positionContent()
-                        this.open()
+                        // this.open()
                             document.addEventListener('click',this.listenDocument)
                         // })
                     }else{
