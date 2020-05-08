@@ -42,7 +42,7 @@ new Vue({
             message:"89",
             loading:false,
             index:3,
-            show:false
+            show:true
         }
     },
     methods:{

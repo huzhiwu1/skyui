@@ -1,6 +1,6 @@
 <template>
     <div class="g-popover" ref="popoverWrapper">
-        <div class="contentWrapper":class="{[position]:true}"
+        <div :class="{[elementPosition]:true}" class="contentWrapper"
              ref="contentWrapper" v-show="showContent">
             <slot name="content"></slot>
         </div>
@@ -14,22 +14,48 @@
     export default {
         name: "popover",
         data(){
+
             return {
                 showContent:false,
                 popoverElem:null,
+                elementPosition: 'bottom'
             }
         },
-        watch:{
-          visible:{
-              immediate:true,
-              handler(value){
-                  this.showContent=value
-                  this.$emit('change',value)
-              }
-          },
-            showContent(value){
-              value?(this.createPopoper(),this.open()):''
-              this.$emit('change',value)
+        watch: {
+            visible: {
+                immediate: true,
+                handler(value) {
+                    // this.showContent=value
+                    if(!this.popoverElem){
+                        this.$nextTick(()=>{
+                            this.showContent = value
+                        })
+                    }else{
+
+                        this.showContent = value
+                    }
+
+                    this.$emit('change', value)
+                }
+            },
+            showContent:{
+                // immediate: true,
+                handler(value) {
+                    // console.log(value,"value")
+                    // console.log(this.$el)
+                    value ? (this.createPopoper(), this.open()) : ''
+                    // console.log(this)
+                    this.$nextTick(()=>{
+                        this.$emit('change', value)
+                    })
+
+                },
+            },
+            position: {
+                immediate: true,
+                handler(value) {
+                    this.elementPosition = value
+                }
             }
         },
         model:{
@@ -64,26 +90,37 @@
         //       }
         //   }
         // },
-        mounted() {
+        // created(){
+        //   this.elementPosition=this.position
+        // },
+        // updated() {
+        //     this.elementPosition=this.position
+        // },
+        destroyed() {
+            document.removeEventListener('click',this.listenDocument)
             if(this.trigger==='click'){
-                this.$refs.popoverWrapper.addEventListener('click',this.handleClick)
+                this.$refs.popoverWrapper.removeEventListener('click', this.handleClick)
+            }else{
+                this.$refs.popoverWrapper.removeEventListener('mouseenter', this.open)
+
+                this.$refs.contentWrapper.removeEventListener('mouseenter', this.open)
+                this.$refs.contentWrapper.removeEventListener('mouseleave',this.close)
+                this.$refs.popoverWrapper.removeEventListener('mouseleave',this.close)
             }
-            if(this.trigger==='hover'){
-                this.$refs.popoverWrapper.addEventListener('mouseenter',()=>{
-                   this.open()
-                })
+        },
+        mounted() {
+            if (this.trigger === 'click') {
+                this.$refs.popoverWrapper.addEventListener('click', this.handleClick)
+                // if(this.visible){
+                    document.addEventListener('click',this.listenDocument)
+                // }
+            }
+            if (this.trigger === 'hover') {
+                this.$refs.popoverWrapper.addEventListener('mouseenter', this.open)
 
-                this.$refs.contentWrapper.addEventListener('mouseenter',()=>{
-                    this.open()
-                })
-                this.$refs.contentWrapper.addEventListener('mouseleave',()=>{
-
-                    this.close()
-                })
-                this.$refs.popoverWrapper.addEventListener('mouseleave',()=>{
-
-                   this.close()
-                })
+                this.$refs.contentWrapper.addEventListener('mouseenter', this.open)
+                this.$refs.contentWrapper.addEventListener('mouseleave',this.close)
+                this.$refs.popoverWrapper.addEventListener('mouseleave',this.close)
                 // this.$refs.contentWrapper.addEventListener('mouseleave',(e)=>{
                 //     console.log(e.target)
                 //     this.close(
@@ -123,7 +160,7 @@
                         key='left'
                     }
                 }
-                this.position=key
+                this.elementPosition = key
                 return this[`${key+'Style'}`]()
             },
             bottomStyle(){
@@ -162,14 +199,14 @@
                         ||this.$refs.contentWrapper.contains(e.target))
                 )){
                     this.close()
-                    document.removeEventListener('click',this.listenDocument)
+                    // document.removeEventListener('click',this.listenDocument)
                 }
             },
             positionContent(){
                 // let {width,height,left,top} = this.$refs.triggerWrapper.getBoundingClientRect()
                 // this.$refs.contentWrapper.style.top=top+window.scrollY+height+'px'
                 // this.$refs.contentWrapper.style.left=left+window.scrollX+'px'
-                let style = this.style(this.position)
+                let style = this.style(this.elementPosition)
                 this.$refs.contentWrapper.style.top=style.top
                 this.$refs.contentWrapper.style.left=style.left
 
@@ -191,16 +228,16 @@
                 if(this.$refs.triggerWrapper.contains(e.target)){
                     this.showContent=!this.showContent
                     // 如果是显示，给document添加事件，点击则关闭content
-                    if(this.showContent){
+                    // if(this.showContent){
                         // this.$nextTick(()=>{
                         //     this.positionContent()
                         // this.open()
-                            document.addEventListener('click',this.listenDocument)
+                        //     document.addEventListener('click',this.listenDocument)
                         // })
-                    }else{
-                        //消除document的事件
-                        document.removeEventListener('click',this.listenDocument)
-                    }
+                    // }else{
+                    //     //消除document的事件
+                    //     document.removeEventListener('click',this.listenDocument)
+                    // }
                 }
             }
         }
