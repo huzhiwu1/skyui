@@ -19,7 +19,28 @@
                 popoverElem:null,
             }
         },
+        watch:{
+          visible:{
+              immediate:true,
+              handler(value){
+                  this.showContent=value
+                  this.$emit('change',value)
+              }
+          },
+            showContent(value){
+              value?(this.createPopoper(),this.open()):this.close()
+              this.$emit('change',value)
+            }
+        },
+        model:{
+          prop:'visible',
+          event:'change'
+        },
         props:{
+            visible:{
+              type:Boolean,
+              default:false
+            },
             position:{
                 type:String,
                 default:'bottom' ,
@@ -35,14 +56,14 @@
                 }
             }
         },
-        watch:{
-          showContent(value){
-              if(value){
-                  // appendChildToBody
-                  this.createPopoper()
-              }
-          }
-        },
+        // watch:{
+        //   visible(value){
+        //       if(value){
+        //           // appendChildToBody
+        //           this.createPopoper()
+        //       }
+        //   }
+        // },
         mounted() {
             if(this.trigger==='click'){
                 this.$refs.popoverWrapper.addEventListener('click',this.handleClick)
@@ -57,15 +78,15 @@
                 })
                 this.$refs.contentWrapper.addEventListener('mouseleave',()=>{
 
-                    this.showContent=false
+                    this.close()
                 })
                 this.$refs.popoverWrapper.addEventListener('mouseleave',()=>{
 
-                   this.showContent=false
+                   this.close()
                 })
                 // this.$refs.contentWrapper.addEventListener('mouseleave',(e)=>{
                 //     console.log(e.target)
-                //     this.showContent=false
+                //     this.close(
                 // })
             }
         },
@@ -98,10 +119,8 @@
                     }
                 }
                 if(key==='right'){
-                    console.log(bodyWidth-right,width+12)
                     if(bodyWidth-right<width+12){
                         key='left'
-
                     }
                 }
                 this.position=key
@@ -142,7 +161,7 @@
                         ||this.$refs.popoverWrapper.contains(e.target)
                         ||this.$refs.contentWrapper.contains(e.target))
                 )){
-                    this.showContent=false
+                    this.close()
                     document.removeEventListener('click',this.listenDocument)
                 }
             },
@@ -156,12 +175,17 @@
 
             },
             open(){
+                console.log('打开')
                 this.showContent=true
+                // this.$emit('change',this.showContent)
                 this.positionContent()
             },
-            // close(){
-            //   this.showContent=false
-            // },
+            close(){
+                console.log('关闭')
+              // this.close()
+                this.showContent=false
+                // this.$emit('change',this.showContent)
+            },
             handleClick(e){
                 //如果点击的是button，切换显示content
                 if(this.$refs.triggerWrapper.contains(e.target)){
@@ -169,7 +193,8 @@
                     // 如果是显示，给document添加事件，点击则关闭content
                     if(this.showContent){
                         // this.$nextTick(()=>{
-                            this.positionContent()
+                        //     this.positionContent()
+                        this.open()
                             document.addEventListener('click',this.listenDocument)
                         // })
                     }else{

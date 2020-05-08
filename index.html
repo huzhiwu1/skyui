@@ -30,67 +30,68 @@
 <body>
 
     <div id="app">
-        <g-popover>
+        <g-button @click="show=!show"></g-button>
+        <g-popover  :visible="show">
             <template v-slot:content>
                 <div class="content2">我是内容</div>
             </template>
             <g-button>按钮1</g-button>
         </g-popover>
-        <g-popover position="top">
-            <template v-slot:content>
-                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button >top</g-button>
-        </g-popover>
-        <g-popover position="left">
-            <template v-slot:content>
-                <div>;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button>left</g-button>
-        </g-popover>
-        <g-popover position="right">
-            <template v-slot:content>
-                <div>1243124agbrwev;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button>right</g-button>
-        </g-popover>
-        <g-popover position="bottom">
-            <template v-slot:content>
-                <div>1243124agbrwev;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button>bottom</g-button>
-        </g-popover>
-        <hr/>
-        <g-popover trigger="hover">
-            <template v-slot:content>
-                <div class="content2">我是内容</div>
-            </template>
-            <g-button>按钮1</g-button>
-        </g-popover>
-        <g-popover trigger="hover" position="top">
-            <template v-slot:content>
-                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button >top</g-button>
-        </g-popover>
-        <g-popover trigger="hover" position="left">
-            <template v-slot:content>
-                <div>;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button>left</g-button>
-        </g-popover>
-        <g-popover trigger="hover" position="right">
-            <template v-slot:content>
-                <div>1243124agbrwev;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button>right</g-button>
-        </g-popover>
-        <g-popover trigger="hover" position="bottom">
-            <template v-slot:content>
-                <div>1243124agbrwev;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button>bottom</g-button>
-        </g-popover>
+<!--        <g-popover position="top">-->
+<!--            <template v-slot:content>-->
+<!--                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button >top</g-button>-->
+<!--        </g-popover>-->
+<!--        <g-popover position="left">-->
+<!--            <template v-slot:content>-->
+<!--                <div>;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button>left</g-button>-->
+<!--        </g-popover>-->
+<!--        <g-popover position="right">-->
+<!--            <template v-slot:content>-->
+<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button>right</g-button>-->
+<!--        </g-popover>-->
+<!--        <g-popover position="bottom">-->
+<!--            <template v-slot:content>-->
+<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button>bottom</g-button>-->
+<!--        </g-popover>-->
+<!--        <hr/>-->
+<!--        <g-popover trigger="hover">-->
+<!--            <template v-slot:content>-->
+<!--                <div class="content2">我是内容</div>-->
+<!--            </template>-->
+<!--            <g-button>按钮1</g-button>-->
+<!--        </g-popover>-->
+<!--        <g-popover trigger="hover" position="top">-->
+<!--            <template v-slot:content>-->
+<!--                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button >top</g-button>-->
+<!--        </g-popover>-->
+<!--        <g-popover trigger="hover" position="left">-->
+<!--            <template v-slot:content>-->
+<!--                <div>;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button>left</g-button>-->
+<!--        </g-popover>-->
+<!--        <g-popover trigger="hover" position="right">-->
+<!--            <template v-slot:content>-->
+<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button>right</g-button>-->
+<!--        </g-popover>-->
+<!--        <g-popover trigger="hover" position="bottom">-->
+<!--            <template v-slot:content>-->
+<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button>bottom</g-button>-->
+<!--        </g-popover>-->
     </div>
 
     <script src="./src/app.js"></script>
