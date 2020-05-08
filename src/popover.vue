@@ -96,7 +96,7 @@
         // updated() {
         //     this.elementPosition=this.position
         // },
-        destroyed() {
+        beforeDestroy() {
             document.removeEventListener('click',this.listenDocument)
             if(this.trigger==='click'){
                 this.$refs.popoverWrapper.removeEventListener('click', this.handleClick)

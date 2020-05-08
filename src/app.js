@@ -35,7 +35,7 @@ Vue.component('g-input',Input)
 Vue.component('g-button',Button)
 Vue.component('g-icon',Icon)
 Vue.component('g-button-group',ButtonGroup)
-new Vue({
+window.vm = new Vue({
     el:'#app',
     data(){
         return{
