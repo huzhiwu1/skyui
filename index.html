@@ -30,13 +30,24 @@
 <body>
 
     <div id="app">
-        <g-button @click="show=!show" ></g-button>
-        <g-popover v-model="show" position="left" >
-            <template v-slot:content>
-                <div class="content2">我是内容</div>
-            </template>
-            <g-button>按钮1</g-button>
-        </g-popover>
+        <g-collapse accordion>
+            <g-collapse-item title="标题一" name="1">
+                内容1
+            </g-collapse-item>
+            <g-collapse-item title="标题二" name="2">
+                内容2
+            </g-collapse-item>
+            <g-collapse-item title="标题三" name="3">
+                内容3
+            </g-collapse-item>
+        </g-collapse>
+<!--        <g-button @click="show=!show" ></g-button>-->
+<!--        <g-popover v-model="show" position="left" >-->
+<!--            <template v-slot:content>-->
+<!--                <div class="content2">我是内容</div>-->
+<!--            </template>-->
+<!--            <g-button>按钮1</g-button>-->
+<!--        </g-popover>-->
 <!--        <g-popover position="top">-->
 <!--            <template v-slot:content>-->
 <!--                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>-->
@@ -86,12 +97,12 @@
 <!--            </template>-->
 <!--            <g-button>right</g-button>-->
 <!--        </g-popover>-->
-        <g-popover trigger="hover" position="bottom">
-            <template v-slot:content>
-                <div>1243124agbrwev;naweuofsnb oiuanoi</div>
-            </template>
-            <g-button>bottom</g-button>
-        </g-popover>
+<!--        <g-popover trigger="hover" position="bottom">-->
+<!--            <template v-slot:content>-->
+<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+<!--            </template>-->
+<!--            <g-button>bottom</g-button>-->
+<!--        </g-popover>-->
     </div>
 
     <script src="./src/app.js"></script>
