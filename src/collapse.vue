@@ -13,6 +13,10 @@
                 activeNames:[].concat(this.value)
             }
         },
+        model:{
+            prop:'value',
+            event:'change'
+        },
         provide(){
           return {
               collapse:this
@@ -32,9 +36,6 @@
             },
         },
         methods:{
-            // setActiveNames(name){
-            //
-            // },
             handleItemClick(name){
                 if(this.accordion){
                     this.activeNames=[name]
@@ -46,6 +47,7 @@
                         this.activeNames.push(name)
                     }
                 }
+                this.$emit('change',this.activeNames)
             }
         }
     }

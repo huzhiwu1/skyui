@@ -47,7 +47,8 @@ window.vm = new Vue({
             message:"89",
             loading:false,
             index:3,
-            show:true
+            show:true,
+            name:'1'
         }
     },
     methods:{
