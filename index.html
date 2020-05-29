@@ -1,36 +1,52 @@
 <!doctype html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>skyui</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --button-height:32px;
-            --font-size:14px;
-            --button-bg:#EAFFFF;
-            --button-active-bg:#DBFFFF;
-            --border-radius:4px;
-            --color:#333;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --button-height: 32px;
+            --font-size: 14px;
+            --button-bg: #EAFFFF;
+            --button-active-bg: #DBFFFF;
+            --border-radius: 4px;
+            --color: #333;
             --border-color: #b4f2ff;
-            --border-hover-color:#ADEBFF;
+            --border-hover-color: #ADEBFF;
         }
-        #app{
-            margin:150px;
+
+        #app {
+            margin: 150px;
         }
-        html,body{
-            padding:10px;
-            height:100%;
+
+        html,
+        body {
+            padding: 10px;
+            height: 100%;
         }
     </style>
 </head>
+
 <body>
 
     <div id="app">
-        <g-collapse accordion v-model="name">
+        <g-tabs :selected="1">
+            <g-tab-pane label="one">content one</g-tab-pane>
+            <g-tab-pane label="two">content two</g-tab-pane>
+            <g-tab-pane label="two">content three</mytabpane>
+        </g-tabs>
+        <g-toast :autoClose="false" waitTime="100" :closeButton="{text:'按钮'}">oooo</g-toast>
+        <!-- <g-collapse accordion v-model="name">
             <g-collapse-item title="标题一" name="1">
                 内容1
             </g-collapse-item>
@@ -40,72 +56,72 @@
             <g-collapse-item title="标题三" name="3">
                 内容3
             </g-collapse-item>
-        </g-collapse>
-<!--        <g-button @click="show=!show" ></g-button>-->
-<!--        <g-popover v-model="show" position="left" >-->
-<!--            <template v-slot:content>-->
-<!--                <div class="content2">我是内容</div>-->
-<!--            </template>-->
-<!--            <g-button>按钮1</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover position="top">-->
-<!--            <template v-slot:content>-->
-<!--                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button >top</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover position="left">-->
-<!--            <template v-slot:content>-->
-<!--                <div>;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button>left</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover position="right">-->
-<!--            <template v-slot:content>-->
-<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button>right</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover position="bottom">-->
-<!--            <template v-slot:content>-->
-<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button>bottom</g-button>-->
-<!--        </g-popover>-->
-<!--        <hr/>-->
-<!--        <g-popover trigger="hover">-->
-<!--            <template v-slot:content>-->
-<!--                <div class="content2">我是内容</div>-->
-<!--            </template>-->
-<!--            <g-button>按钮1</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover trigger="hover" position="top">-->
-<!--            <template v-slot:content>-->
-<!--                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button >top</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover trigger="hover" position="left">-->
-<!--            <template v-slot:content>-->
-<!--                <div>;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button>left</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover trigger="hover" position="right">-->
-<!--            <template v-slot:content>-->
-<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button>right</g-button>-->
-<!--        </g-popover>-->
-<!--        <g-popover trigger="hover" position="bottom">-->
-<!--            <template v-slot:content>-->
-<!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
-<!--            </template>-->
-<!--            <g-button>bottom</g-button>-->
-<!--        </g-popover>-->
+        </g-collapse> -->
+        <!--        <g-button @click="show=!show" ></g-button>-->
+        <!--        <g-popover v-model="show" position="left" >-->
+        <!--            <template v-slot:content>-->
+        <!--                <div class="content2">我是内容</div>-->
+        <!--            </template>-->
+        <!--            <g-button>按钮1</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover position="top">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button >top</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover position="left">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button>left</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover position="right">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button>right</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover position="bottom">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button>bottom</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <hr/>-->
+        <!--        <g-popover trigger="hover">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div class="content2">我是内容</div>-->
+        <!--            </template>-->
+        <!--            <g-button>按钮1</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover trigger="hover" position="top">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>1243124235234432ktnsdjkvbnaujibvnuiaefbnvvuijjanerfujbpv;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button >top</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover trigger="hover" position="left">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button>left</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover trigger="hover" position="right">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button>right</g-button>-->
+        <!--        </g-popover>-->
+        <!--        <g-popover trigger="hover" position="bottom">-->
+        <!--            <template v-slot:content>-->
+        <!--                <div>1243124agbrwev;naweuofsnb oiuanoi</div>-->
+        <!--            </template>-->
+        <!--            <g-button>bottom</g-button>-->
+        <!--        </g-popover>-->
     </div>
 
     <script src="./src/app.js"></script>
 </body>
-</html>
 
+</html>

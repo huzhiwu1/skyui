@@ -1,6 +1,7 @@
 module.exports = {
     title: 'Hello skyUI',
     description: '一个基于vue，仿elementUI开发的UI组件库',
+    base: '/skyui/',
     head: [
         ['link', {
             rel: 'icon',
@@ -28,13 +29,14 @@ module.exports = {
     },
     themeConfig: {
         nav: [
-            { text: 'Home', link: '/' },
-            { text: 'Guide', link: '/guide/' },
+            { text: '主页', link: '/' },
+            { text: '快速入门', link: '/guide/' },
+            { text: 'github', link: 'https://github.com/huzhiwu1/skyui' }
         ],
         sidebarDepth: 2,
         sidebar: [
             {
-                title: 'Guide',
+                title: '快速入门',
                 collapsable: true,
                 children: ['/guide/']
             },
@@ -45,11 +47,36 @@ module.exports = {
                 path: '/components/',
                 children: [
                     {
-                        title: 'button',
+                        title: 'Button',
                         path: '/components/button'
+                    },
+                    {
+                        title: 'Grid',
+                        path: '/components/grid'
+                    },
+                    {
+                        title: 'Collapse',
+                        path: '/components/collapse'
+                    },
+                    {
+                        title: 'Input',
+                        path: '/components/input'
+                    },
+                    {
+                        title: 'Popover',
+                        path: '/components/popover'
+                    },
+                    {
+                        title: 'Toast',
+                        path: '/components/toast'
+                    },
+                    {
+                        title: "Tabs",
+                        path: '/components/tabs'
                     }
                 ]
-            }
+            },
+
         ]
     }
 }
